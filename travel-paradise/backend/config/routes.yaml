@@ -1,0 +1,149 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+api_login_check:
+    path: /api/auth/login
+    methods: POST
+
+api_register:
+    path: /api/auth/register
+    methods: POST
+    controller: App\Controller\AuthController::register
+
+# Guide routes
+app_guide_list:
+    path: /api/guides
+    methods: GET
+    controller: App\Controller\GuideController::list
+
+app_guide_show:
+    path: /api/guides/{id}
+    methods: GET
+    controller: App\Controller\GuideController::show
+
+app_guide_create:
+    path: /api/guides
+    methods: POST
+    controller: App\Controller\GuideController::create
+
+app_guide_update:
+    path: /api/guides/{id}
+    methods: PUT
+    controller: App\Controller\GuideController::update
+
+app_guide_delete:
+    path: /api/guides/{id}
+    methods: DELETE
+    controller: App\Controller\GuideController::delete
+
+app_guide_by_country:
+    path: /api/guides/country/{country}
+    methods: GET
+    controller: App\Controller\GuideController::findByCountry
+
+# Visit routes
+app_visit_list:
+    path: /api/visits
+    methods: GET
+    controller: App\Controller\VisitController::list
+
+app_visit_show:
+    path: /api/visits/{id}
+    methods: GET
+    controller: App\Controller\VisitController::show
+
+app_visit_create:
+    path: /api/visits
+    methods: POST
+    controller: App\Controller\VisitController::create
+
+app_visit_update:
+    path: /api/visits/{id}
+    methods: PUT
+    controller: App\Controller\VisitController::update
+
+app_visit_delete:
+    path: /api/visits/{id}
+    methods: DELETE
+    controller: App\Controller\VisitController::delete
+
+app_visit_upcoming:
+    path: /api/visits/upcoming
+    methods: GET
+    controller: App\Controller\VisitController::upcoming
+
+app_visit_by_month:
+    path: /api/visits/month/{year}/{month}
+    methods: GET
+    controller: App\Controller\VisitController::findByMonth
+
+# Visitor routes
+app_visitor_list:
+    path: /api/visitors/visit/{visitId}
+    methods: GET
+    controller: App\Controller\VisitorController::list
+
+app_visitor_show:
+    path: /api/visitors/{id}
+    methods: GET
+    controller: App\Controller\VisitorController::show
+
+app_visitor_create:
+    path: /api/visitors
+    methods: POST
+    controller: App\Controller\VisitorController::create
+
+app_visitor_update:
+    path: /api/visitors/{id}
+    methods: PUT
+    controller: App\Controller\VisitorController::update
+
+app_visitor_delete:
+    path: /api/visitors/{id}
+    methods: DELETE
+    controller: App\Controller\VisitorController::delete
+
+app_visitor_stats:
+    path: /api/visitors/visit/{visitId}/stats
+    methods: GET
+    controller: App\Controller\VisitorController::getVisitStats
+
+# User routes
+app_user_list:
+    path: /api/users
+    methods: GET
+    controller: App\Controller\UserController::list
+
+app_user_show:
+    path: /api/users/{id}
+    methods: GET
+    controller: App\Controller\UserController::show
+
+app_user_create:
+    path: /api/users
+    methods: POST
+    controller: App\Controller\UserController::create
+
+app_user_update:
+    path: /api/users/{id}
+    methods: PUT
+    controller: App\Controller\UserController::update
+
+app_user_delete:
+    path: /api/users/{id}
+    methods: DELETE
+    controller: App\Controller\UserController::delete
+
+# Statistics routes
+app_statistics_monthly:
+    path: /api/statistics/monthly/{year}/{month}
+    methods: GET
+    controller: App\Controller\StatisticsController::getMonthlyStatistics
+
+app_statistics_guide:
+    path: /api/statistics/guide/{guideId}/{year}/{month}
+    methods: GET
+    controller: App\Controller\StatisticsController::getGuideStatistics

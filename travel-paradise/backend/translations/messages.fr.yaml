@@ -1,0 +1,135 @@
+email:
+  visit:
+    confirmation:
+      subject: 'Confirmation de votre réservation - Travel Paradise'
+      body: |
+        Bonjour,
+
+        Nous confirmons votre réservation pour la visite suivante :
+
+        Date : %visit_date%
+        Lieu : %place_name%
+
+        Vous pouvez consulter les détails de votre visite en cliquant sur le lien suivant :
+        %visit_url%
+
+        Nous vous souhaitons une excellente visite !
+
+        Cordialement,
+        L'équipe Travel Paradise
+
+    reminder:
+      subject: 'Rappel de votre visite - Travel Paradise'
+      body: |
+        Bonjour,
+
+        Nous vous rappelons votre visite prévue :
+
+        Date : %visit_date%
+        Lieu : %place_name%
+
+        Vous pouvez consulter les détails de votre visite en cliquant sur le lien suivant :
+        %visit_url%
+
+        Nous vous souhaitons une excellente visite !
+
+        Cordialement,
+        L'équipe Travel Paradise
+
+    cancellation:
+      subject: 'Annulation de votre visite - Travel Paradise'
+      body: |
+        Bonjour,
+
+        Nous vous informons de l'annulation de votre visite :
+
+        Date prévue : %visit_date%
+        Lieu : %place_name%
+        Motif : %reason%
+
+        Vous pouvez consulter les détails en cliquant sur le lien suivant :
+        %visit_url%
+
+        Nous vous prions de nous excuser pour ce désagrément.
+
+        Cordialement,
+        L'équipe Travel Paradise
+      no_reason: 'Non spécifié'
+
+    schedule_change:
+      subject: 'Modification de l''horaire de votre visite - Travel Paradise'
+      body: |
+        Bonjour,
+
+        Nous vous informons d'un changement d'horaire pour votre visite :
+
+        Ancien horaire : %old_date%
+        Nouvel horaire : %new_date%
+        Lieu : %place_name%
+
+        Vous pouvez consulter les détails mis à jour en cliquant sur le lien suivant :
+        %visit_url%
+
+        Nous vous prions de nous excuser pour ce changement.
+
+        Cordialement,
+        L'équipe Travel Paradise
+
+  refund:
+    request:
+      subject: 'Demande de remboursement - Travel Paradise'
+      body: |
+        Bonjour,
+
+        Nous avons bien reçu votre demande de remboursement pour la visite suivante :
+
+        Date : %visit_date%
+        Lieu : %place_name%
+        Montant : %amount% €
+        Motif : %reason%
+
+        Votre demande est en cours d'étude. Nous vous tiendrons informé de sa suite.
+
+        Vous pouvez consulter les détails de votre visite en cliquant sur le lien suivant :
+        %visit_url%
+
+        Cordialement,
+        L'équipe Travel Paradise
+
+    approval:
+      subject: 'Remboursement approuvé - Travel Paradise'
+      body: |
+        Bonjour,
+
+        Nous avons le plaisir de vous informer que votre demande de remboursement a été approuvée :
+
+        Date de la visite : %visit_date%
+        Lieu : %place_name%
+        Montant remboursé : %amount% €
+
+        Le remboursement sera effectué sur votre moyen de paiement initial dans un délai de 5 à 10 jours ouvrés.
+
+        Vous pouvez consulter les détails de votre visite en cliquant sur le lien suivant :
+        %visit_url%
+
+        Cordialement,
+        L'équipe Travel Paradise
+
+    rejection:
+      subject: 'Demande de remboursement refusée - Travel Paradise'
+      body: |
+        Bonjour,
+
+        Nous regrettons de vous informer que votre demande de remboursement a été refusée :
+
+        Date de la visite : %visit_date%
+        Lieu : %place_name%
+        Motif du refus : %reason%
+
+        Conformément à nos conditions générales de vente, les remboursements ne sont pas possibles moins de 3 jours avant la visite.
+
+        Vous pouvez consulter les détails de votre visite en cliquant sur le lien suivant :
+        %visit_url%
+
+        Cordialement,
+        L'équipe Travel Paradise 
