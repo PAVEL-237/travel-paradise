@@ -10,26 +10,25 @@ security:
                 class: App\Entity\User
                 property: email
     # used to reload user from session & other features (e.g. switch_user)
+    
     firewalls:
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
-        login:
-            pattern: ^/api/auth/login
+        firewalls:
+        api:
+            pattern: ^/api
             stateless: true
             json_login:
-                check_path: /api/auth/login
+                check_path: /api/login
                 username_path: email
                 password_path: password
-                success_handler: lexik_jwt_authentication.handler.authentication_success
-                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+                success_handler: App\Security\LoginSuccessHandler
+                failure_handler: App\Security\LoginFailureHandler
         api:
             pattern: ^/api
             stateless: true
             jwt: ~
     access_control:
-        - { path: ^/api/auth/login, roles: PUBLIC_ACCESS }
-        - { path: ^/api/auth/register, roles: PUBLIC_ACCESS }
+        - { path: ^/api/auth/login, roles: PUBLIC_ACCESS, methods: [POST, OPTIONS] }
+        - { path: ^/api/auth/register, roles: PUBLIC_ACCESS, methods: [POST, OPTIONS] }
         - { path: ^/api/statistics, roles: ROLE_ADMIN }
         - { path: ^/api/guides, roles: [ROLE_ADMIN, ROLE_USER] }
         - { path: ^/api/visits, roles: [ROLE_ADMIN, ROLE_USER] }

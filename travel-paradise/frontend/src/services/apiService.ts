@@ -1,20 +1,20 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
-import { API_BASE_URL } from '../config';
-import { authService } from './authService';
+import { API_ROUTES } from '../config/api';
+import authService from './authService';
 
 class ApiService {
     private api: AxiosInstance;
 
     constructor() {
         this.api = axios.create({
-            baseURL: API_BASE_URL,
+            baseURL: 'http://localhost:8000/api',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
-            }
+            },
+            withCredentials: true
         });
 
-        // Intercepteur pour ajouter le token d'authentification
         this.api.interceptors.request.use(
             (config) => {
                 const token = authService.getToken();
@@ -23,28 +23,21 @@ class ApiService {
                 }
                 return config;
             },
-            (error) => {
-                return Promise.reject(error);
-            }
+            (error) => Promise.reject(error)
         );
 
-        // Intercepteur pour gérer les erreurs
         this.api.interceptors.response.use(
             (response) => response,
             async (error) => {
                 const originalRequest = error.config;
 
-                // Si l'erreur est 401 et que ce n'est pas une tentative de rafraîchissement
                 if (error.response?.status === 401 && !originalRequest._retry) {
                     originalRequest._retry = true;
 
                     try {
-                        // Tenter de rafraîchir le token
                         await authService.refreshToken();
-                        // Réessayer la requête originale
                         return this.api(originalRequest);
                     } catch (refreshError) {
-                        // Si le rafraîchissement échoue, déconnecter l'utilisateur
                         authService.logout();
                         return Promise.reject(refreshError);
                     }
@@ -81,4 +74,4 @@ class ApiService {
     }
 }
 
-export const apiService = new ApiService(); 
+export const apiService = new ApiService();
